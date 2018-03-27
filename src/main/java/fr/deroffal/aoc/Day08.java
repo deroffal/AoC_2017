@@ -31,20 +31,30 @@ public class Day08 {
 		comparisons.put("<", (a, b) -> a < b);
 	}
 
+	private static int maximum = 0;
+
 	public static void main(String[] args) {
 		Utils.readLines("day08.txt").forEach(line -> {
 			String[] tokens = line.split(" ");
 			//tokens[3] == "if" !
-			doLine(tokens[0], tokens[1], tokens[2], tokens[4], tokens[5], tokens[6]);
+			int newValue = doLine(tokens[0], tokens[1], tokens[2], tokens[4], tokens[5], tokens[6]);
+
+			if (newValue > maximum) {
+				maximum = newValue;
+			}
 		});
 
 		System.out.println("Partie 1 : " + Collections.max(valueByName.values()));
+		System.out.println("Partie 2 : " + maximum);
 	}
 
-	private static void doLine(final String name1, final String operationOperator, final String value1, final String name2, final String comparisonOperator, final String value2) {
+	private static int doLine(final String name1, final String operationOperator, final String value1, final String name2, final String comparisonOperator, final String value2) {
+		int newValue = 0;
 		if (comparisons.get(comparisonOperator).compare(valueByName.computeIfAbsent(name2, ZERO_IF_ABSENT), Integer.parseInt(value2))) {
-			valueByName.put(name1, operations.get(operationOperator).apply(valueByName.computeIfAbsent(name1, ZERO_IF_ABSENT), Integer.parseInt(value1)));
+			valueByName.put(name1, newValue = operations.get(operationOperator).apply(valueByName.computeIfAbsent(name1, ZERO_IF_ABSENT), Integer.parseInt(value1)));
+			return newValue;
 		}
+		return newValue;
 	}
 
 }
