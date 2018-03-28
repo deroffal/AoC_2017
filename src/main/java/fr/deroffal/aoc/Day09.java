@@ -4,10 +4,13 @@ import fr.deroffal.aoc.util.Utils;
 
 public class Day09 {
 
+	private static int garbageSize = 0;
+
 	public static void main(String[] args) {
 		final String input = Utils.readLine("day09.txt");
 
 		System.out.println("Partie 1 : " + countScore(input));
+		System.out.println("Partie 1 : " + garbageSize);
 
 	}
 
@@ -31,7 +34,9 @@ public class Day09 {
 		for (int i = 0; i < whitoutCanceled.length(); i++) {
 			final char charAt = whitoutCanceled.charAt(i);
 			if (charAt == '<') {
-				i = whitoutCanceled.indexOf('>', i);
+				final int garbageEnd = whitoutCanceled.indexOf('>', i);
+				garbageSize +=  (garbageEnd -i-1);
+				i = garbageEnd;
 			} else {
 				out.append(charAt);
 			}
