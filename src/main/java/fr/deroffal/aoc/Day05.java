@@ -16,7 +16,7 @@ public class Day05 {
 		System.out.println("Partie 2 : " + countStepToEscape(input, i -> i >= 3 ? -1 : 1));
 	}
 
-	public static int countStepToEscape(final List<Integer> input, final Function<Integer, Integer> offsetFunction) {
+	static int countStepToEscape(final List<Integer> input, final Function<Integer, Integer> offsetFunction) {
 		final List<Integer> instructions = new ArrayList<>(input);
 		int count = 0;
 		int position = 0;
@@ -27,7 +27,7 @@ public class Day05 {
 		return count;
 	}
 
-	public static int getNextPosition(final List<Integer> instructions, final int currentPosition, final Function<Integer, Integer> offsetFunction) {
+	static int getNextPosition(final List<Integer> instructions, final int currentPosition, final Function<Integer, Integer> offsetFunction) {
 		int currentPositionValue = instructions.get(currentPosition);
 		instructions.set(currentPosition, currentPositionValue + offsetFunction.apply(currentPositionValue));
 		return currentPosition + currentPositionValue;

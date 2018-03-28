@@ -23,7 +23,7 @@ public class Day02 {
         return input.stream().mapToInt(Day02::calculerDifference).sum();
     }
 
-    public static int calculerDifference(final String s) {
+    static int calculerDifference(final String s) {
         final List<Integer> liste = Utils.splitToIntegerList("\t", s);
         return Collections.max(liste) - Collections.min(liste);
     }
@@ -32,7 +32,7 @@ public class Day02 {
         return input.stream().mapToInt(Day02::calculerDifferenceDivision).sum();
     }
 
-    public static int calculerDifferenceDivision(final String s) {
+    static int calculerDifferenceDivision(final String s) {
         final List<Integer> liste = Utils.splitToIntegerList("\t", s);
         Collections.sort(liste, Collections.reverseOrder());
 

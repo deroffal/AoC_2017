@@ -24,7 +24,7 @@ public class Day07 {
 
 	}
 
-	public static Map<String, Programm> getProgrammByNames(final List<String> programms) {
+	static Map<String, Programm> getProgrammByNames(final List<String> programms) {
 		return programms.stream().map(s -> s.split(" ")).collect(Collectors.toMap(tab -> tab[0], tab -> {
 			final String name = tab[0];
 			final int weight = Integer.parseInt(tab[1].substring(1, tab[1].length() - 1));
@@ -32,7 +32,7 @@ public class Day07 {
 		}));
 	}
 
-	public static Programm findRoot(final Map<String, Programm> programmsByName, final List<String> programms) {
+	static Programm findRoot(final Map<String, Programm> programmsByName, final List<String> programms) {
 		//Parmis l'input, on cherche le premier (qui est le seul) programme vérifiant isProgrammeRoot (ie qui n'est pas dans la partie après '-> ').
 		return programmsByName.entrySet().stream().filter(entry -> isProgrammeRoot(programms, entry.getKey())).findFirst().map(Map.Entry::getValue).orElse(null);
 	}

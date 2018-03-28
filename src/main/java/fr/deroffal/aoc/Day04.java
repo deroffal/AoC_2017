@@ -20,7 +20,7 @@ public class Day04 {
 		return input.stream().filter(Day04::isLineValid).count();
 	}
 
-	public static boolean isLineValid(final String ligne) {
+	static boolean isLineValid(final String ligne) {
 		final String[] ligneDecoupee = ligne.split(" ");
 		return ligneDecoupee.length == Arrays.stream(ligneDecoupee).collect(Collectors.toSet()).size();
 	}
@@ -29,7 +29,7 @@ public class Day04 {
 		return input.stream().filter(Day04::isLineValidWithAnagram).count();
 	}
 
-	public static boolean isLineValidWithAnagram(final String ligne) {
+	static boolean isLineValidWithAnagram(final String ligne) {
 		final String[] ligneDecoupee = ligne.split(" ");
 		return ligneDecoupee.length == Arrays.stream(ligneDecoupee).map(Day04::sortString).collect(Collectors.toSet()).size();
 	}

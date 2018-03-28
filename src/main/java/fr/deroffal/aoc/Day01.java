@@ -13,7 +13,7 @@ public class Day01 {
         System.out.println("Partie 2 : " + calculerScore(input, input.length() / 2));
     }
 
-    public static int calculerScore(final String input, final int offset) {
+    static int calculerScore(final String input, final int offset) {
         final int inputLenght = input.length();
 
         return IntStream.range(0, inputLenght).map(i -> {

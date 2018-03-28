@@ -29,7 +29,7 @@ public class Day06 {
 		System.out.println("Partie 2 : " + (cycles - previousRedistributions.get(blocksAfterRedistribution)));
 	}
 
-	public static List<Integer> redistribute(final List<Integer> blocks) {
+	static List<Integer> redistribute(final List<Integer> blocks) {
 		final int blockSize = blocks.size();
 
 		int maxBlock = Collections.max(blocks);

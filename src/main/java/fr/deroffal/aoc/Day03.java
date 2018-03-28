@@ -34,7 +34,7 @@ public class Day03 {
 	/**
 	 * @return |x|+|y|-1
 	 */
-	public static int part1(final int input) {
+	static int part1(final int input) {
 		Coordinate coordinate = new Coordinate(0, 0);
 
 		int posX = 0, posY = 0;
@@ -54,7 +54,7 @@ public class Day03 {
 		return Math.abs(coordinate.getX()) + Math.abs(coordinate.getY()) - 1;
 	}
 
-	public static int part2(final int input) {
+	static int part2(final int input) {
 		final Map<Coordinate, Integer> coordinateByValue = new HashMap<>();
 		Coordinate coordinate = new Coordinate(0, 0);
 		coordinateByValue.put(coordinate, 1);
