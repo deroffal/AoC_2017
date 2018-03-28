@@ -10,13 +10,14 @@ public class Day09 {
 		final String input = Utils.readLine("day09.txt");
 
 		System.out.println("Partie 1 : " + countScore(input));
-		System.out.println("Partie 1 : " + garbageSize);
+		System.out.println("Partie 2 : " + garbageSize);
 
 	}
 
 	static int countScore(final String in) {
 		final String withoutGarbage = removeGarbage(in);
 		int score = 0;
+
 		int localScore = 0;
 		for (final char c : withoutGarbage.toCharArray()) {
 			if (c == '{') {
@@ -30,12 +31,12 @@ public class Day09 {
 
 	static String removeGarbage(final String input) {
 		final String whitoutCanceled = removeCanceledCharacters(input);
-		StringBuilder out = new StringBuilder();
+		final StringBuilder out = new StringBuilder();
 		for (int i = 0; i < whitoutCanceled.length(); i++) {
 			final char charAt = whitoutCanceled.charAt(i);
 			if (charAt == '<') {
 				final int garbageEnd = whitoutCanceled.indexOf('>', i);
-				garbageSize +=  (garbageEnd -i-1);
+				garbageSize += (garbageEnd - i - 1);
 				i = garbageEnd;
 			} else {
 				out.append(charAt);
@@ -45,7 +46,7 @@ public class Day09 {
 	}
 
 	static String removeCanceledCharacters(final String in) {
-		StringBuilder out = new StringBuilder();
+		final StringBuilder out = new StringBuilder();
 		for (int i = 0; i < in.length(); i++) {
 			final char charAt = in.charAt(i);
 			if (charAt == '!') {
