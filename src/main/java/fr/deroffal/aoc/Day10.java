@@ -12,15 +12,14 @@ import fr.deroffal.aoc.util.Utils;
 public class Day10 {
 
 	private static final List<Integer> SEQUENCE_END = Arrays.asList(17, 31, 73, 47, 23);
+	public static final int NUMBER_OF_ROUNDS = 64;
 
 	private static int position;
 	private static int skipSize;
 
 	public static void main(String[] args) {
 		final List<Integer> lengthSequence = Utils.readLineToIntegerList("day10.txt", ",");
-
-		int part1 = part1(IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList()), lengthSequence);
-		System.out.println("Partie 1 : " + part1);
+		System.out.println("Partie 1 : " + part1(IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList()), lengthSequence));
 
 		final String input = Utils.readLine("day10.txt");
 		System.out.println("Partie 2 : " + doKnotHash(input, IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList())));
@@ -53,43 +52,39 @@ public class Day10 {
 	}
 
 	static String doKnotHash(final String input, final List<Integer> numbers) {
-		//initialisation
 		position = 0;
 		skipSize = 0;
-		final List<Integer> lengthSequence = getLength(input);
+		final List<Integer> lengthSequence = getLengthSequence(input);
 
-		//sparse hash
-		doSparseHash(numbers, lengthSequence, 64);
+		doSparseHash(numbers, lengthSequence);
 
+		return reduceToDenseHash(numbers);
+	}
+
+	private static String reduceToDenseHash(final List<Integer> numbers) {
 		final StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < 16; i++) {
+
+		IntStream.range(0, 16).forEach(i -> {
 			final int start = i * 16;
 			int xor = numbers.get(start);
 			for (int j = 1; j < 16; j++) {
 				final Integer integer = numbers.get(start + j);
-				xor = xor ^ integer;
+				xor ^= integer;
 			}
-			String hexa = Integer.toHexString(xor);
-
-			String padded = "00".substring(hexa.length()) + hexa;
-			sb.append(padded);
-		}
-
-
-		//dense hash
+			final String hexa = Integer.toHexString(xor);
+			sb.append("00".substring(hexa.length()) + hexa);
+		});
 		return sb.toString();
 	}
 
-	static List<Integer> getLength(final String input) {
-		//toAscii
+	static List<Integer> getLengthSequence(final String input) {
 		final List<Integer> lengthSequence = input.chars().boxed().collect(Collectors.toList());
-		//ajouter le suffixe
 		lengthSequence.addAll(SEQUENCE_END);
 		return lengthSequence;
 	}
 
-	static void doSparseHash(final List<Integer> numbers, final List<Integer> lengthSequence, final int numberOfRounds) {
-		IntStream.range(0, numberOfRounds).forEach(round -> doSingleRound(numbers, lengthSequence));
+	private static void doSparseHash(final List<Integer> numbers, final List<Integer> lengthSequence) {
+		IntStream.range(0, NUMBER_OF_ROUNDS).forEach(round -> doSingleRound(numbers, lengthSequence));
 	}
 
 }

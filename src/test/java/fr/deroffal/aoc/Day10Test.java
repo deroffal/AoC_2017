@@ -64,7 +64,7 @@ class Day10Test {
 	 */
 	@Test
 	void conversionAscii() {
-		assertEquals(Arrays.asList(49, 44, 50, 44, 51, 17, 31, 73, 47, 23), Day10.getLength("1,2,3"));
+		assertEquals(Arrays.asList(49, 44, 50, 44, 51, 17, 31, 73, 47, 23), Day10.getLengthSequence("1,2,3"));
 	}
 
 	@Test
@@ -81,5 +81,10 @@ class Day10Test {
 		assertEquals("3efbe78a8d82f29979031a4aa0b16a9d", Day10.doKnotHash("1,2,3", numbers));
 		numbers = IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList());
 		assertEquals("63960835bcdc130f0b66d7ff4f6a5a8e", Day10.doKnotHash("1,2,4", numbers));
+	}
+
+	@Test
+	void monCas(){
+		assertEquals("70b856a24d586194331398c7fcfa0aaf", Day10.doKnotHash("147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70", IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList())));
 	}
 }
