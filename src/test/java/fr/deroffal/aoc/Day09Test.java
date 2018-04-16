@@ -29,7 +29,7 @@ class Day09Test {
 	}
 
 	/**
-	 * {} : 1 group.
+	 * {} : 1 regrouperAvec.
 	 */
 	@Test
 	void simple_expect_1() {
@@ -53,7 +53,7 @@ class Day09Test {
 	}
 
 	/**
-	 * {<{},{},{{}}>} : 1 group (which itself contains garbage).
+	 * {<{},{},{{}}>} : 1 regrouperAvec (which itself contains garbage).
 	 */
 	@Test
 	void simpleSelfContainGarbage_expect_1() {
@@ -61,7 +61,7 @@ class Day09Test {
 	}
 
 	/**
-	 * {<a>,<a>,<a>,<a>} : 1 group.
+	 * {<a>,<a>,<a>,<a>} : 1 regrouperAvec.
 	 */
 	@Test
 	void manyGarbage_expect_1() {

@@ -12,7 +12,7 @@ import fr.deroffal.aoc.util.Utils;
 public class Day10 {
 
 	private static final List<Integer> SEQUENCE_END = Arrays.asList(17, 31, 73, 47, 23);
-	public static final int NUMBER_OF_ROUNDS = 64;
+	private static final int NUMBER_OF_ROUNDS = 64;
 
 	private static int position;
 	private static int skipSize;
@@ -72,7 +72,7 @@ public class Day10 {
 				xor ^= integer;
 			}
 			final String hexa = Integer.toHexString(xor);
-			sb.append("00".substring(hexa.length()) + hexa);
+			sb.append("00".substring(hexa.length())).append(hexa);
 		});
 		return sb.toString();
 	}

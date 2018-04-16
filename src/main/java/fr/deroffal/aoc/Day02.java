@@ -30,7 +30,7 @@ public class Day02 {
 
 	static int calculerDifferenceDivision(final String s) {
 		final List<Integer> liste = Utils.splitToIntegerList("\t", s);
-		Collections.sort(liste, Collections.reverseOrder());
+		liste.sort(Collections.reverseOrder());
 
 		int listeSize = liste.size();
 		for (int x = 0; x < listeSize; x++) {
