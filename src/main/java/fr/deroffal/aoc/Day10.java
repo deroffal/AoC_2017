@@ -22,7 +22,7 @@ public class Day10 {
 		System.out.println("Partie 1 : " + part1(IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList()), lengthSequence));
 
 		final String input = Utils.readLine("day10.txt");
-		System.out.println("Partie 2 : " + doKnotHash(input, IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList())));
+		System.out.println("Partie 2 : " + doKnotHash(input));
 	}
 
 	static int part1(final List<Integer> numbers, final List<Integer> lengthSequence) {
@@ -51,7 +51,9 @@ public class Day10 {
 		return (position + length + skipSize) % inputSize;
 	}
 
-	static String doKnotHash(final String input, final List<Integer> numbers) {
+	static String doKnotHash(final String input) {
+		final List<Integer> numbers = IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList());
+
 		position = 0;
 		skipSize = 0;
 		final List<Integer> lengthSequence = getLengthSequence(input);
@@ -86,5 +88,4 @@ public class Day10 {
 	private static void doSparseHash(final List<Integer> numbers, final List<Integer> lengthSequence) {
 		IntStream.range(0, NUMBER_OF_ROUNDS).forEach(round -> doSingleRound(numbers, lengthSequence));
 	}
-
 }

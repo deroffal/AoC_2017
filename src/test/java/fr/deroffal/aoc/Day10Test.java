@@ -70,21 +70,21 @@ class Day10Test {
 	@Test
 	void doKnotHash_for_EmptyString() {
 		final List<Integer> numbers = IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList());
-		assertEquals("a2582a3a0e66e6e86e3812dcb672a272", Day10.doKnotHash("", numbers));
+		assertEquals("a2582a3a0e66e6e86e3812dcb672a272", Day10.doKnotHash(""));
 	}
 
 	@Test
 	void doKnotHash_for_otherExample() {
 		List<Integer> numbers = IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList());
-		assertEquals("33efeb34ea91902bb2f59c9920caa6cd", Day10.doKnotHash("AoC 2017", numbers));
+		assertEquals("33efeb34ea91902bb2f59c9920caa6cd", Day10.doKnotHash("AoC 2017"));
 		numbers = IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList());
-		assertEquals("3efbe78a8d82f29979031a4aa0b16a9d", Day10.doKnotHash("1,2,3", numbers));
+		assertEquals("3efbe78a8d82f29979031a4aa0b16a9d", Day10.doKnotHash("1,2,3"));
 		numbers = IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList());
-		assertEquals("63960835bcdc130f0b66d7ff4f6a5a8e", Day10.doKnotHash("1,2,4", numbers));
+		assertEquals("63960835bcdc130f0b66d7ff4f6a5a8e", Day10.doKnotHash("1,2,4"));
 	}
 
 	@Test
 	void monCas(){
-		assertEquals("70b856a24d586194331398c7fcfa0aaf", Day10.doKnotHash("147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70", IntStream.rangeClosed(0, 255).boxed().collect(Collectors.toList())));
+		assertEquals("70b856a24d586194331398c7fcfa0aaf", Day10.doKnotHash("147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70"));
 	}
 }
