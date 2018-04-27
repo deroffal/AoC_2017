@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class Day04Test {
+class Day04Test {
 
 	@Test
 	void aa_bb_cc_dd_ee_valide() {

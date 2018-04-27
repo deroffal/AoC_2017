@@ -13,8 +13,8 @@ public class Day15 {
 
 	public static void main(String[] args) {
 		final List<String> input = Utils.readLines("day15.txt");
-		long aValue = Integer.parseInt(input.get(0).substring(24, 27));
-		long bValue = Integer.parseInt(input.get(1).substring(24, 27));
+		long aValue = Integer.parseInt(input.get(0).substring(24));
+		long bValue = Integer.parseInt(input.get(1).substring(24));
 
 		System.out.println("Part 1 :" + getMatchCountPart1(aValue, bValue));
 		System.out.println("Part 2 :" + getMatchCountPart2(aValue, bValue));

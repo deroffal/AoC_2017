@@ -1,6 +1,6 @@
 package fr.deroffal.aoc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Day16Test {
-
 
 	@Test
 	void spin() {
@@ -30,13 +29,13 @@ class Day16Test {
 	}
 
 	@Test
-	void examplePart1(){
+	void examplePart1() {
 		final List<String> example = Arrays.asList("s1", "x3/4", "pe/b");
 		assertEquals("baedc", Day16.dance(example, "abcde"));
 	}
 
 	@Test
-	void examplePart2(){
+	void examplePart2() {
 		final List<String> example = Arrays.asList("s1", "x3/4", "pe/b");
 		final String abcde = Day16.dance(example, "abcde");
 		assertEquals("ceadb", Day16.dance(example, abcde));

@@ -1,6 +1,6 @@
 package fr.deroffal.aoc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +17,8 @@ class Day15Test {
 		assertEquals(285222916L, Day15.getNextValuePart1(137874439, Generator.B));
 	}
 
-
 	@Test
-	void getLast16Digits_whenMoreThan16digits(){
+	void getLast16Digits_whenMoreThan16digits() {
 		assertEquals("1010101101100111", Day15.getLast16Digits(1092455));
 		assertEquals("1111011100111001", Day15.getLast16Digits(1181022009));
 		assertEquals("1110001101001010", Day15.getLast16Digits(245556042));
@@ -28,7 +27,7 @@ class Day15Test {
 	}
 
 	@Test
-	void getLast16Digits_whenLessThan16digits(){
+	void getLast16Digits_whenLessThan16digits() {
 		assertEquals("0000000000000000", Day15.getLast16Digits(0));
 		assertEquals("0000000000000001", Day15.getLast16Digits(1));
 	}

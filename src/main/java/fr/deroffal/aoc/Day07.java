@@ -33,7 +33,7 @@ public class Day07 {
 	}
 
 	static Programm findRoot(final Map<String, Programm> programmsByName, final List<String> programms) {
-		//Parmis l'input, on cherche le premier (qui est le seul) programme vérifiant isProgrammeRoot (ie qui n'est pas dans la partie après '-> ').
+		//Parmi l'input, on cherche le premier (qui est le seul) programme vérifiant isProgrammeRoot (ie qui n'est pas dans la partie après '-> ').
 		return programmsByName.entrySet().stream().filter(entry -> isProgrammeRoot(programms, entry.getKey())).findFirst().map(Map.Entry::getValue).orElse(null);
 	}
 

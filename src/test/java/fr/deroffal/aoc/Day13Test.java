@@ -1,6 +1,7 @@
 package fr.deroffal.aoc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,12 +34,12 @@ class Day13Test {
 	}
 
 	@Test
-	void exampleTotalSeverity(){
+	void exampleTotalSeverity() {
 		assertEquals(24, Day13.computeTotalSeverity(firewall, 0));
 	}
 
 	@Test
-	void examplePart2(){
+	void examplePart2() {
 		final List<String> input = Arrays.asList("0: 3", "1: 2", "4: 4", "6: 4");
 		final Map<Integer, Integer> firewall = Day13.buildFirewall(input);
 		assertEquals(10, Day13.findDelayToCrossFirewall(firewall));

@@ -84,7 +84,7 @@ class Day10Test {
 	}
 
 	@Test
-	void monCas(){
+	void monCas() {
 		assertEquals("70b856a24d586194331398c7fcfa0aaf", Day10.doKnotHash("147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70"));
 	}
 }
