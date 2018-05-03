@@ -5,31 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import fr.deroffal.aoc.bean.Comparison;
-import fr.deroffal.aoc.bean.Operation;
+import fr.deroffal.aoc.bean.ComparisonEnum;
+import fr.deroffal.aoc.bean.OperationEnum;
 import fr.deroffal.aoc.util.Utils;
 
 public class Day08 {
 
 	private static final Function<String, Integer> ZERO_IF_ABSENT = name -> 0;
 
-	private static final Map<String, Operation> operations;
-	private static final Map<String, Comparison> comparisons;
 	private static final Map<String, Integer> valueByName = new HashMap<>();
-
-	static {
-		operations = new HashMap<>();
-		operations.put("inc", (a, b) -> a + b);
-		operations.put("dec", (a, b) -> a - b);
-
-		comparisons = new HashMap<>();
-		comparisons.put("!=", (a, b) -> a != b);
-		comparisons.put("==", (a, b) -> a == b);
-		comparisons.put(">=", (a, b) -> a >= b);
-		comparisons.put("<=", (a, b) -> a <= b);
-		comparisons.put(">", (a, b) -> a > b);
-		comparisons.put("<", (a, b) -> a < b);
-	}
 
 	private static int maximum = 0;
 
@@ -50,8 +34,8 @@ public class Day08 {
 
 	private static int doLine(final String name1, final String operationOperator, final String value1, final String name2, final String comparisonOperator, final String value2) {
 		int newValue = 0;
-		if (comparisons.get(comparisonOperator).compare(valueByName.computeIfAbsent(name2, ZERO_IF_ABSENT), Integer.parseInt(value2))) {
-			valueByName.put(name1, newValue = operations.get(operationOperator).apply(valueByName.computeIfAbsent(name1, ZERO_IF_ABSENT), Integer.parseInt(value1)));
+		if (ComparisonEnum.findAndCompare(comparisonOperator, valueByName.computeIfAbsent(name2, ZERO_IF_ABSENT), Integer.parseInt(value2))) {
+			valueByName.put(name1, newValue = OperationEnum.findAndApply(operationOperator, valueByName.computeIfAbsent(name1, ZERO_IF_ABSENT), Integer.parseInt(value1)));
 			return newValue;
 		}
 		return newValue;

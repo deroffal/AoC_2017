@@ -8,9 +8,13 @@ import fr.deroffal.aoc.util.Utils;
 
 public class Day14 {
 
+	private static final int CHAR_1 = 49;
+	private static final int GRID_MIN = 0;
+	private static final int GRID_MAX = 127;
+
 	public static void main(String[] args) {
 		final String input = Utils.readLine("day14.txt");
-		System.out.println("Part 1 :" + IntStream.range(0, 128).mapToLong(i -> sumForLine(input, i)).sum());
+		System.out.println("Part 1 :" + IntStream.rangeClosed(GRID_MIN, GRID_MAX).mapToLong(i -> sumForLine(input, i)).sum());
 		System.out.println("Part 2 : " + countRegions(input));
 	}
 
@@ -21,7 +25,7 @@ public class Day14 {
 
 	private static long getSumOfUsedForCharInHash(final int charValue) {
 		final String binaryString = charValueToBin(charValue);
-		return binaryString.chars().filter(bin -> bin == 49).count();
+		return binaryString.chars().filter(bin -> bin == CHAR_1).count();
 	}
 
 	private static String charValueToBin(final int charValue) {
@@ -46,7 +50,7 @@ public class Day14 {
 	}
 
 	private static void flagNeigthboors(final List<String> grid, final int i, final int j) {
-		if (j >= 0 && j <= 127 && i >= 0 && i <= 127 && grid.get(j).charAt(i) == '1') {
+		if (j >= GRID_MIN && j <= GRID_MAX && i >= GRID_MIN && i <= GRID_MAX && grid.get(j).charAt(i) == '1') {
 
 			final StringBuilder sb = new StringBuilder(grid.get(j));
 			sb.setCharAt(i, '0');
@@ -61,7 +65,7 @@ public class Day14 {
 
 	private static List<String> buildGrid(final String input) {
 		final List<String> grid = new ArrayList<>();
-		IntStream.range(0, 128).mapToObj(i -> Day10.doKnotHash(input + "-" + i)).forEach(hash -> {
+		IntStream.rangeClosed(GRID_MIN, GRID_MAX).mapToObj(i -> Day10.doKnotHash(input + "-" + i)).forEach(hash -> {
 			final StringBuilder sb = new StringBuilder();
 			hash.chars().forEach(c -> {
 				final String binaryString = Integer.toBinaryString(Integer.parseInt(String.valueOf((char) c), 16));

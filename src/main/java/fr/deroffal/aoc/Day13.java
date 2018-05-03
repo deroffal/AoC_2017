@@ -1,13 +1,10 @@
 package fr.deroffal.aoc;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import fr.deroffal.aoc.util.Utils;
 
@@ -26,7 +23,7 @@ public class Day13 {
 	}
 
 	static int computeTotalSeverity(final Map<Integer, Integer> firewall, final int delay) {
-		final Predicate<Map.Entry<Integer, Integer>> isCaught = e -> (e.getKey() +delay)% (2 * (e.getValue() - 1)) == 0;
+		final Predicate<Map.Entry<Integer, Integer>> isCaught = e -> (e.getKey() + delay) % (2 * (e.getValue() - 1)) == 0;
 		final ToIntFunction<Map.Entry<Integer, Integer>> computeSeverity = e -> (delay + e.getKey()) * e.getValue();
 		return firewall.entrySet().stream().filter(isCaught).mapToInt(computeSeverity).sum();
 	}

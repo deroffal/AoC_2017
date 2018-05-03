@@ -26,14 +26,15 @@ public class Day18 {
 			final char register = tokens[1].charAt(0);
 
 			final long x = valueByRegister.computeIfAbsent(register, key -> 0L);
-			final long y = tokens.length == 3 ? getValue(tokens[2]) : -1;
+			final long y = tokens.length == 3 ? getValueAsLong(tokens[2]) : -1;
 
 			switch (instruction) {
 			case "set":
 				valueByRegister.put(register, y);
 				break;
 			case "add":
-				valueByRegister.put(register, x + y);
+//				valueByRegister.put(register, x + y);
+				valueByRegister.merge(register, y, (oldValue, newValue) -> oldValue == null ? newValue : oldValue+newValue);
 				break;
 			case "mul":
 				valueByRegister.put(register, x * y);
@@ -58,10 +59,10 @@ public class Day18 {
 				throw new IllegalArgumentException("Instruction non-reconnue! : " + instruction);
 			}
 		}
-		return -1;
+		throw new IllegalArgumentException("Oups!");
 	}
 
-	private static Long getValue(final String o) {
+	private static Long getValueAsLong(final String o) {
 		try {
 			return Long.parseLong(o);
 		} catch (final NumberFormatException e) {
