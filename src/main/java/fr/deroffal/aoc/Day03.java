@@ -81,14 +81,14 @@ public class Day03 {
 	}
 
 	private static int computeValueFromNeighbors(final Map<Coordinate, Integer> coordinateByValue, final int posX, final int posY) {
-		int value = 0;
-		for (int x = posX - 1; x <= posX + 1; x++) {
-			for (int y = posY - 1; y <= posY + 1; y++) {
-				final Integer neighborValue = coordinateByValue.get(new Coordinate(x, y));
-				value += neighborValue != null ? neighborValue : 0;
-			}
-		}
-		return value;
+		return coordinateByValue.entrySet().stream().filter(k -> isNeightbor(posX, posY, k)).mapToInt(Map.Entry::getValue).sum();
+	}
+
+	private static boolean isNeightbor(final int posX, final int posY, final Map.Entry<Coordinate, Integer> k) {
+		final Coordinate key = k.getKey();
+		int x = key.getX();
+		int y = key.getY();
+		return posX - 1 <= x && x <= posX + 1 && posY - 1 <= y && y <= posY + 1;
 	}
 
 }
