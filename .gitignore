@@ -5,5 +5,16 @@
 
 target*
 
-.idea
+# Build Artifacts
+
+.gradle/
+build/
+target/
+bin/
+
+# IntelliJ IDEA Files
+
 *.iml
+*.ipr
+*.iws
+*.idea
